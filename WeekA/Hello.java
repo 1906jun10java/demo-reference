@@ -3,15 +3,28 @@ import java.util.Arrays; // just saves you typing!
 public class Hello {
 
 	public static void main(String[] args) {
-		funWithArrays(new Car(1997, "Mazda", "Sundance"), new Boat("blue", "Tracker"), new Boat("red", "Champion"));
+		/* funWithArrays(new Car(1997, "Mazda", "Sundance"), new Boat("blue", "Tracker"), new Car(2015, "Hyundai", 
+"Elantra"), 
+new Boat("red", "Champion"));*/
+		Car c  = new Car(1997, "Mazda", "Sundance");
+		c.setMilesSinceOilChange(5500);
+		checkTheOil(c);
 	}
 
+	public static void checkTheOil(Car c) {
+		if (c.getMilesSinceOilChange() >= Car.recommendedMilesBetweenOilChanges) {
+			System.out.println("Change your oil");
+		} else {
+			int milesLeft = Car.recommendedMilesBetweenOilChanges - c.getMilesSinceOilChange();
+			System.out.println("You have "+milesLeft+" miles left.");
+		}
+	}
 
 	// overloaded funWithArrays
-	public static void funWithArrays(Vehicle v1, Vehicle v2, Vehicle v3) {
+	public static void funWithArrays(Vehicle ...v) {
 		// put Vehicles in array and print it out
-		Vehicle[] vehicles = {v1, v2, v3};
-		System.out.println(Arrays.toString(vehicles));
+		//Vehicle[] vehicles = {v1, v2, v3};
+		System.out.println(Arrays.toString(v));
 	}
 	
 
