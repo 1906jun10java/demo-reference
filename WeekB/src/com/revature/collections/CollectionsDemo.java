@@ -2,9 +2,12 @@ package com.revature.collections;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 import java.util.Vector;
@@ -15,8 +18,68 @@ public class CollectionsDemo {
 
 	public static void main(String[] args) {
 
-		funWithQueues();
+		funWithIterator();
 
+	}
+	
+	public static void funWithIterator() {
+		
+		// initialize a Collection (extends Iterable interface)
+		Set<User> userSet = new HashSet<>();
+		userSet.add(new User("Gandalf", "Grey", "mithrandir", "you_shall_not"));
+		userSet.add(new User("Paul", "Hewson", "bono", "u2RuleZ"));
+		userSet.add(new User("David", "Tennant", "doc10", "tardis"));
+		
+		/*
+		 * Iterator:
+		 * 
+		 * -Iterable is an interface which is extended by Collection
+		 * -Iterable provides methods for easy traversal of any concrete subtype
+		 * 			-defines iterator() method, which return an Iterator
+		 * -Iterator has methods .next(), .hasNext(), .remove()
+		 * -using the Iterator allows us to safely remove elements in place and traverse multiple Collections at once
+		 * 
+		 * https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
+		 */
+		
+		Iterator<User> userIterator = userSet.iterator();
+		
+		// use hasNext() method (returns a boolean) as the condition for a while loop
+		while(userIterator.hasNext()) {
+			User u = userIterator.next(); // next() returns the next element, and steps forward the position of the iterator
+			// could use remove() to remove elements from the Collection (filtering a Collection)
+			System.out.println(u);
+		}
+		
+	}
+	
+	public static void funWithMaps() {
+		
+		/*
+		 * Map:
+		 * 
+		 * -object which maps keys to values
+		 * -no duplicate keys
+		 * -every key may map to at most one value
+		 * -most implementations allow keys to be null
+		 * 
+		 * https://docs.oracle.com/javase/8/docs/api/java/util/Map.html
+		 */
+		
+		Map<String, String> credentialsMap =  new HashMap<>();
+		credentialsMap.put("mithrandir", "you_shall_not");
+		credentialsMap.put(null, ""); // is fine, as long as there is only one null key
+		credentialsMap.put("bono", null); // null values are fine, any number of keys may have null values
+		credentialsMap.put("bono2", null);
+		credentialsMap.put("doc10", "tardis");
+		
+		// retrieve objects by their keys
+		System.out.println(credentialsMap.get("doc10"));
+		
+		// iterate through the map
+		for (Map.Entry<String, String> entry : credentialsMap.entrySet()) {
+			System.out.println("Key: "+entry.getKey()+", Value: "+entry.getValue());
+		}
 	}
 	
 	public static void funWithQueues() {
