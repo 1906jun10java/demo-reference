@@ -33,11 +33,19 @@ public class MyLinkedList<T> {
 
 	// remove and return the first item in the list
 	public T poll() {
+		Node<T> firstNode = this.head;
+		if (firstNode != null) {
+			this.head = firstNode.getNextNode();
+			return firstNode.getData();
+		}
 		return null;
 	}
 
 	// return but do not remove the first item
 	public T peek() {
+		if (this.head != null) {
+			return this.head.getData();
+		}
 		return null;
 	}
 

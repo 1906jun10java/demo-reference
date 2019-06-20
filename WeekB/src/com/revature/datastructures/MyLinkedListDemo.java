@@ -26,7 +26,20 @@ public class MyLinkedListDemo {
 		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		userList.printList();
 		
-
+		
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("Test peek()");
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("Head: "+userList.peek());
+		userList.printList();
+		
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("Test poll()");
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("Head: "+userList.poll());
+		userList.printList();
+		
+		
 	}
 
 }
