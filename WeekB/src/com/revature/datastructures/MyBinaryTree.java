@@ -40,6 +40,11 @@ public class MyBinaryTree {
 		// [value to return if condition is false]
 		return current == null ? 0 : getSizeRecursive(current.left) + 1 + getSizeRecursive(current.right);
 	}
+	
+	// does the tree contain the given value?
+	public boolean containsNode(int value ) {
+		return false;
+	}
 
 	// inner class
 	// we never actually need TreeNode outside the binary tree
