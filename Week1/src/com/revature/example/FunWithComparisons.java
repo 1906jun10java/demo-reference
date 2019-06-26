@@ -2,6 +2,7 @@ package com.revature.example;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,6 +22,17 @@ public class FunWithComparisons {
 		sortWithComparable(carList);
 		System.out.println("Cars after sort with Comparable:");
 		printCars(carList);
+		sortWithComparator(carList, new CarYearCompare());
+		System.out.println("Cars after sort with CarYearCompare:");
+		printCars(carList);
+		sortWithComparator(carList, new CarModelCompare());
+		System.out.println("Cars after sort with CarModelCompare:");
+		printCars(carList);
+		
+	}
+	
+	static void sortWithComparator(List<Car> cars, Comparator<Car> carComp) {
+		Collections.sort(cars, carComp);
 	}
 	
 	static void sortWithComparable(List<Car> cars) {

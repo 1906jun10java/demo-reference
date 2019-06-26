@@ -22,7 +22,9 @@ public class Car extends Vehicle implements Comparable<Car> {
 	private String model;
 	private Double fuelLevel;
 
-	public int getYearManufactured() {
+	// autoboxing the primitive int value of the instance variable into 
+	// an instance of its wrapper class (Integer)
+	public Integer getYearManufactured() {
 		return yearManufactured;
 	}
 
