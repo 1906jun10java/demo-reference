@@ -1,6 +1,6 @@
 package com.revature.beans;
 
-public class Car extends Vehicle {
+public class Car extends Vehicle implements Comparable<Car> {
 
 	// best practices: explicitly declare a noargs constructor
 	// when any constructor is present, we are not provided the default constructor
@@ -45,7 +45,7 @@ public class Car extends Vehicle {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	
+
 	public Double getFuelLevel() {
 		return fuelLevel;
 	}
@@ -98,6 +98,11 @@ public class Car extends Vehicle {
 	public String toString() {
 		return "Car [yearManufactured=" + yearManufactured + ", make=" + make + ", model=" + model + ", fuelLevel="
 				+ fuelLevel + "]";
+	}
+
+	@Override
+	public int compareTo(Car arg0) {
+		return this.make.compareTo(arg0.getMake());
 	}
 
 }
