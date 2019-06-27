@@ -2,11 +2,13 @@ package com.revature.beans;
 
 public class Car extends Vehicle implements Comparable<Car> {
 
-	// best practices: explicitly declare a noargs constructor
-	// when any constructor is present, we are not provided the default constructor
-
-	public Car() {
-		super(); // call to superclass' constructor
+	public Car(int yearManufactured, String make, String model, Double fuelLevel, TransmissionType transmissionType) {
+		super();
+		this.yearManufactured = yearManufactured;
+		this.make = make;
+		this.model = model;
+		this.fuelLevel = fuelLevel;
+		this.transmissionType = transmissionType;
 	}
 
 	public Car(int yearManufactured, String make, String model, Double fuelLevel) {
@@ -17,10 +19,18 @@ public class Car extends Vehicle implements Comparable<Car> {
 		this.fuelLevel = fuelLevel;
 	}
 
+	// best practices: explicitly declare a noargs constructor
+	// when any constructor is present, we are not provided the default constructor
+
+	public Car() {
+		super(); // call to superclass' constructor
+	}
+
 	private int yearManufactured;
 	private String make;
 	private String model;
 	private Double fuelLevel;
+	private TransmissionType transmissionType = TransmissionType.MANUAL; // preemptively set default value
 
 	// autoboxing the primitive int value of the instance variable into 
 	// an instance of its wrapper class (Integer)
@@ -55,6 +65,19 @@ public class Car extends Vehicle implements Comparable<Car> {
 	public void setFuelLevel(Double fuelLevel) {
 		this.fuelLevel = fuelLevel;
 	}
+	
+	public TransmissionType getTransmissionType() {
+		return transmissionType;
+	}
+
+	public void setTransmissionType(TransmissionType transmissionType) {
+		this.transmissionType = transmissionType;
+	}
+
+	@Override
+	public int compareTo(Car arg0) {
+		return this.make.compareTo(arg0.getMake());
+	}
 
 	@Override
 	public int hashCode() {
@@ -63,6 +86,7 @@ public class Car extends Vehicle implements Comparable<Car> {
 		result = prime * result + ((fuelLevel == null) ? 0 : fuelLevel.hashCode());
 		result = prime * result + ((make == null) ? 0 : make.hashCode());
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
+		result = prime * result + ((transmissionType == null) ? 0 : transmissionType.hashCode());
 		result = prime * result + yearManufactured;
 		return result;
 	}
@@ -91,6 +115,8 @@ public class Car extends Vehicle implements Comparable<Car> {
 				return false;
 		} else if (!model.equals(other.model))
 			return false;
+		if (transmissionType != other.transmissionType)
+			return false;
 		if (yearManufactured != other.yearManufactured)
 			return false;
 		return true;
@@ -99,12 +125,7 @@ public class Car extends Vehicle implements Comparable<Car> {
 	@Override
 	public String toString() {
 		return "Car [yearManufactured=" + yearManufactured + ", make=" + make + ", model=" + model + ", fuelLevel="
-				+ fuelLevel + "]";
-	}
-
-	@Override
-	public int compareTo(Car arg0) {
-		return this.make.compareTo(arg0.getMake());
+				+ fuelLevel + ", transmissionType=" + transmissionType + "]";
 	}
 
 }
