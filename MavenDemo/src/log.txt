@@ -1,0 +1,10 @@
+2019-06-27 14:20:17 TRACE root:18 - trace message
+2019-06-27 14:20:17 DEBUG root:19 - debug message
+2019-06-27 14:20:17 INFO  root:20 - info message
+2019-06-27 14:20:17 WARN  root:21 - warn message
+2019-06-27 14:20:17 ERROR root:22 - error message
+2019-06-27 14:20:17 FATAL root:23 - fatal message
+2019-06-27 14:21:49 INFO  root:20 - info message
+2019-06-27 14:21:49 WARN  root:21 - warn message
+2019-06-27 14:21:49 ERROR root:22 - error message
+2019-06-27 14:21:49 FATAL root:23 - fatal message
