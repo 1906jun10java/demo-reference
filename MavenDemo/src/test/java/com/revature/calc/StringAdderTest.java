@@ -49,5 +49,16 @@ public class StringAdderTest {
 		sa.add("1,2,3");
 	}
 	
+	@Test
+	public void incorrectCharactersThrowsException() throws CalculatorException {
+		thrown.expect(CalculatorException.class);
+		sa.add("4,cat");
+	}
+	
+	@Test
+	public void twoNumbersReturnsSum() throws CalculatorException {
+		assertEquals(44.0, sa.add("22.0,22.0"), .0001);
+	}
+	
 	
 }
