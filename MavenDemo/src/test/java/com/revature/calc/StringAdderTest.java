@@ -34,12 +34,12 @@ public class StringAdderTest {
 	}
 	
 	@Test
-	public void EmptyStringReturnsZero() throws CalculatorException {
+	public void emptyStringReturnsZero() throws CalculatorException {
 		assertEquals(0, sa.add(""), .0001); // floating-point assertions require an offset 
 	}
 	
 	@Test 
-	public void NullReturnsZero() throws CalculatorException {
+	public void nullReturnsZero() throws CalculatorException {
 		assertEquals(0, sa.add(null), .0001);
 	}
 	
