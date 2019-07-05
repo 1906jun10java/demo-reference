@@ -1,6 +1,12 @@
 package com.revature.funfactory;
 
-public class Car {
+import java.io.Serializable;
+
+public class Car implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1676480743963997184L;
 	private String make;
 	private int year;
 	private String model;
