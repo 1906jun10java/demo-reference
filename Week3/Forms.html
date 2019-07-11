@@ -14,8 +14,26 @@
         </form>
         <!-- sanitizing input, using dates -->
         <form>
-            <input name="text1" placeholder="AAA999" required="true" pattern="[A-Z]{3}[0-9]{3}">
+            <input name="text1" autocomplete="off" placeholder="AAA999" required="true" pattern="[A-Z]{3}[0-9]{3}">
+            <input name="date1" type="date"/>
             <input type="submit" value="submit"/>
+        </form>
+        <!-- fieldset from HTML5 -->
+        <form>
+            <fieldset>
+                <legend>Cat Breeds</legend>
+                <input type="radio" name="radio1" value="Sphinx" /> Sphinx <br>
+                <input type="radio" name="radio1" value="Domestic Shorthair" /> Domestic Shorthair <br>
+                <input type="radio" name="radio1" value="Bengal" /> Bengal <br>
+            </fieldset>
+            <fieldset>
+                <legend>Programming Languages</legend>
+                <input type="checkbox" name="checkbox1" value="Java" /> Java <br>
+                <input type="checkbox" name="checkbox1" value="Python" /> Python <br>
+                <input type="checkbox" name="checkbox1" value="C++" /> C++ <br>
+            </fieldset>
+            <br>
+            <input type="submit" value="submit" />
         </form>
     </body>
 </html>
