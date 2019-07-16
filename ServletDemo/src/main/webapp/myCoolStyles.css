@@ -1,0 +1,8 @@
+@charset "ISO-8859-1";
+
+.display {
+	background-color: #67ab99;
+	text-align: center;
+	padding: 15rem;
+	margin: 15rem;
+}
