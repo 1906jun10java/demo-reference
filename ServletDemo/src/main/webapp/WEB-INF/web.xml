@@ -11,4 +11,12 @@
   	<servlet-name>Login</servlet-name>
   	<url-pattern>/login</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>Profile</servlet-name>
+  	<servlet-class>com.revature.servlet.ProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Profile</servlet-name>
+  	<url-pattern>/profile</url-pattern>
+  </servlet-mapping>
 </web-app>
