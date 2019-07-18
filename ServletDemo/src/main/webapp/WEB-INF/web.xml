@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>ServletDemo</display-name>
-  <!-- in this element, we declare our servlet to the web container -->
   <servlet>
-  	<servlet-name>Login</servlet-name>
-  	<servlet-class>com.revature.servlet.LoginServlet</servlet-class> <!-- FULLY QUALIFIED CLASSNAME -->
+    <servlet-name>Login</servlet-name>
+    <servlet-class>com.revature.servlet.LoginServlet</servlet-class>
   </servlet>
-  <!-- in this element, we map the servlet to a url pattern -->
   <servlet-mapping>
-  	<servlet-name>Login</servlet-name>
-  	<url-pattern>/login</url-pattern>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>Profile</servlet-name>
-  	<servlet-class>com.revature.servlet.ProfileServlet</servlet-class>
+    <servlet-name>Profile</servlet-name>
+    <servlet-class>com.revature.servlet.ProfileServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Profile</servlet-name>
-  	<url-pattern>/profile</url-pattern>
+    <servlet-name>Profile</servlet-name>
+    <url-pattern>/profile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.revature.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
 </web-app>

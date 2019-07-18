@@ -13,7 +13,7 @@ public class AuthenticationService {
 	public User authenticateUser(Credentials creds) {
 		User u =  null;
 		if (creds.getUsername().equals("merlin") && creds.getPassword().equals("cat")) {
-			u = new User(6, "Merlin", "Higgins", creds.getUsername(), "merlin@wizcat.com");
+			u = new User(6, "Merlin", "Higgins", creds.getUsername(), "merlin@wizardcat.com");
 		}
 		return u;
 	}
