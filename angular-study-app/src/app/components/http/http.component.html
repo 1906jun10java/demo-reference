@@ -1,0 +1,72 @@
+<div>
+    <div class="panel-heading">
+      <span class="label label-default label-center">{{title}}</span>
+    </div>
+    <div class="panel-body">
+      <div class="list-group">
+        <div class="list-group-item">
+          <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+          We can make
+          <strong>asynchronous</strong> HTTP calls in Angular.
+        </div>
+        <div class="list-group-item">
+          <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+          We have to create our own
+          <strong>Service</strong> and
+          <strong>inject</strong> the Http object into it.
+        </div>
+        <div class="list-group-item">
+          <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+          We have to inject our
+          <strong>Service</strong> into our
+          <strong>Component</strong>.
+        </div>
+        <div class="list-group-item">
+          <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+          We are consuming an API endpoint exposed by the ServletDemo application.
+        </div>
+        <div class="list-group-item">
+          <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+          We are using the
+          <strong>Publisher/Subscriber</strong> design pattern.
+        </div>
+        <div class="list-group-item">
+          <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+          We are
+          <strong>publishing</strong> an
+          <strong>Observable</strong> to which our component
+          <strong>subscribes</strong>.
+        </div>
+        <div class="list-group-item list-group-item-demo">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
+          <div class="form-group">
+            <input [(ngModel)]="this.selectedBearId" placeholder="Bear id" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success btn-center" (click)="getBearInformation()">GET THIS BEAR</button>
+          </div>
+          <div *ngIf ="this.bear" class="list-group-item">
+            <strong>Name: </strong> {{ bear.name | uppercase }}
+          </div>
+        </div> 
+        <div class="list-group-item list-group-item-demo">
+            <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
+            <div class="list-group-item">
+              <strong>Now check out all the bears, using HttpClient: </strong>
+            </div>
+            <br>
+            <div class="form-group">
+              <button class="btn btn-success btn-center" (click)="getBears()">GET ALL BEARS</button>
+            </div>
+            <ul>
+                <li *ngFor="let bear of this.bears">
+                  {{bear.name}}, with id {{bear.id}}, of type {{bear.bearType.name}}
+                </li>
+              </ul>
+          </div> 
+      </div>
+    </div>
+    <div class="panel-footer">
+      <a href="{{documentation}}">Documentation</a>
+    </div>
+  </div>
