@@ -4,11 +4,11 @@ import java.util.List;
 
 import com.revature.beans.Bear;
 import com.revature.dao.BearDao;
-import com.revature.dao.FakeBearDaoImpl;
+import com.revature.dao.BearDaoImpl;
 
 public class BearService {
 	
-	private BearDao bd = new FakeBearDaoImpl(); // this is the only line I have to change to swap out dao implementation
+	private BearDao bd = new BearDaoImpl(); // this is the only line I have to change to swap out dao implementation
 
 	public BearService() {
 	}
