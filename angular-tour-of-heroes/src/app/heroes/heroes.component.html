@@ -1,0 +1,23 @@
+<div *ngIf="selectedHero">
+    <!-- interpolation - one-way databinding from ts -> view -->
+    <!-- can use anything defined in the component.ts file, and even do some calculations, string templating, etc.-->
+    <h2>{{selectedHero.name | uppercase}} Details</h2>
+    <!-- pipe: | used formatting and filtering data.. uppercase, data formats, currency... -->
+    <!-- there are lots of built-in pipes and you can write your own custom pipes -->
+    <div><span>id: </span>{{selectedHero.id}}</div>
+    <div><span>name: </span>{{selectedHero.name}}</div>
+    <!-- two-way databinding with NgModel sets up a dynamic relationship between ts variables (model) and html view-->
+    <div>
+        <label>name, bound to NgModel:
+            <input [(ngModel)]="selectedHero.name" placeholder="name" />
+        </label>
+    </div>
+</div>
+
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <!-- *ngFor is a structural directive! so are *ngIf, *ngSwitch -->
+    <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+</ul>
