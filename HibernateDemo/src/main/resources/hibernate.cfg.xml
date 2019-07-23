@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- this specifies the DTD (document type definition) of a Hibernate config 
+	file -->
+<!-- a DTD describes what elements a file may contain to be considered "valid" -->
+<!-- can also use an XSD (XML schema definition), which is a bit more detailed 
+	and written in XML -->
+<!-- an XML file can be "well-formed" (all tags are closed, following style 
+	rules, etc.) without being "valid" (conforms to a DTD or XSD) -->
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver.class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		<!-- convenience for development -->
+		<property name="hibernate.show_sql">true</property>
+		<!-- choose whether to start fresh or update existing ddl -->
+		<!-- defaults to update -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+	</session-factory>
+</hibernate-configuration>
