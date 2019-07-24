@@ -20,7 +20,15 @@ public class Driver {
 		s.close();*/
 		
 		BookDao bd = new BookDaoImpl();
-		//System.out.println(bd.getBookById(2));
+		
+		//bd.addBook(new Book("The Count of Monte Cristo","Fiction", "Alexandre","Dumas"));
+		
+		Book bookToUpdate = bd.getBookById(2);
+		
+		bookToUpdate.setTitle("Percy Jackson and the Goblet of Zeus");
+		
+		bd.updateBook(bookToUpdate);
+		
 		List<Book> bookList = bd.getAllBooks();
 		for(Book b : bookList) {
 			System.out.println(b);

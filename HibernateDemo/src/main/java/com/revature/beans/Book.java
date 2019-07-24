@@ -31,7 +31,7 @@ public class Book {
 		this.authorLastName = authorLastName;
 	}
 	
-	@Id
+	@Id // indicates that this is the primary key! ("persistent identity")
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="bookSequence")
 	@SequenceGenerator(allocationSize=1, name="bookSequence", sequenceName="SQ_BOOK_PK")
 	@Column(name="BOOK_ID")

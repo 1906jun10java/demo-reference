@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import com.revature.beans.Book;
 import com.revature.util.ConnectionUtil;
@@ -37,20 +38,38 @@ public class BookDaoImpl implements BookDao {
 
 	@Override
 	public boolean addBook(Book book) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean added = false;
+		try(Session s = sf.openSession()) {
+			Transaction tx = s.beginTransaction();
+			s.persist(book); // adds a new record, alternative to save() 
+			tx.commit();
+			added = true;
+		}
+		return added;
 	}
 
 	@Override
 	public boolean updateBook(Book book) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean updated = false;
+		try(Session s = sf.openSession()) {
+			Transaction tx = s.beginTransaction();
+			s.saveOrUpdate(book);
+			tx.commit();
+			updated = true;
+		}
+		return updated;
 	}
 
 	@Override
 	public boolean deleteBook(Book book) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean deleted = false;
+		try(Session s = sf.openSession()) {
+			Transaction tx = s.beginTransaction();
+			s.delete(book);
+			tx.commit();
+			deleted = true;
+		}
+		return deleted;
 	}
 
 }
