@@ -1,13 +1,11 @@
 package com.revature;
 
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import com.revature.beans.Author;
 import com.revature.beans.Book;
-import com.revature.beans.Genre;
 import com.revature.dao.BookDao;
 import com.revature.dao.BookDaoImpl;
 import com.revature.util.ConnectionUtil;
@@ -26,30 +24,36 @@ public class Driver {
 		 */
 
 		SessionFactory sf = ConnectionUtil.getSessionFactory();
-		//funWithGetAndLoad(sf);
-		//funWithSaveAndPersist(sf);
-		//funWithUpdateAndMerge(sf);
-		
 		funWithMultiplicity(sf);
+		
 	}
+	
 	
 	static void funWithMultiplicity(SessionFactory sf) {
 		
-		Session s = sf.openSession();
+	/*	Session s = sf.openSession();
 		Transaction tx = s.beginTransaction();
 		
-		Book b = new Book("A House for Mr. Biswas", new Genre("Fiction"), "V.S.", "Naipaul");
-		s.persist(b);
+		// obtain a persistent instance of Book
+		Book b = s.get(Book.class, 1);
+		
+		// add an Author to the Book
+		b.getAuthors().add(new Author("V.S.", "Naipaul"));
 		
 		tx.commit();
 		s.close();
-		
+*/		
 		BookDao bd = new BookDaoImpl();
 		for (Book b1 : bd.getAllBooks()) {
 			System.out.println(b1);
 		}
 	}
 	
+	// note! 
+	// the session method explorations below are from BEFORE the introduction of the many-many
+	// between Book and Author, so they will not run correctly with the current bean structure.
+	
+	/*
 	static void funWithUpdateAndMerge(SessionFactory sf) {
 		Session s1 = sf.openSession();
 		Transaction tx1 = s1.beginTransaction();
@@ -174,5 +178,5 @@ public class Driver {
 		}
 
 	}
-
+	*/
 }

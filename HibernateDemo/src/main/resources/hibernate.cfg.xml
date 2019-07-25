@@ -21,5 +21,6 @@
 		<!-- where are our mapped beans? -->
 		<mapping class="com.revature.beans.Book"></mapping>
 		<mapping class="com.revature.beans.Genre"></mapping>
+		<mapping class="com.revature.beans.Author"></mapping>
 	</session-factory>
 </hibernate-configuration>

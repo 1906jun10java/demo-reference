@@ -1,5 +1,8 @@
 package com.revature.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -16,23 +21,19 @@ import javax.persistence.Table;
 @Table(name="BOOK")
 public class Book {
 	
-	public Book() {
-		super();
-	}
-	public Book(String title, Genre genre, String authorFirstName, String authorLastName) {
-		super();
-		this.title = title;
-		this.genre = genre;
-		this.authorFirstName = authorFirstName;
-		this.authorLastName = authorLastName;
-	}
-	public Book(int id, String title, Genre genre, String authorFirstName, String authorLastName) {
+	public Book(int id, String title, Genre genre) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.genre = genre;
-		this.authorFirstName = authorFirstName;
-		this.authorLastName = authorLastName;
+	}
+	public Book(String title, Genre genre) {
+		super();
+		this.title = title;
+		this.genre = genre;
+	}
+	public Book() {
+		super();
 	}
 	
 	@Id // indicates that this is the primary key! ("persistent identity")
@@ -50,11 +51,12 @@ public class Book {
 	@JoinColumn(name="GENRE_ID")
 	private Genre genre;
 	
-	@Column(name="AUTHOR_FIRST_NAME")
-	private String authorFirstName;
-	
-	@Column(name="AUTHOR_LAST_NAME")
-	private String authorLastName;
+	// unidirectional many-many relationship with Author
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable(name="BOOK_AUTHOR", 
+		joinColumns = { @JoinColumn(name="BOOK_ID")}, 
+		inverseJoinColumns= { @JoinColumn(name="AUTHOR_ID")})
+	private List<Author> authors = new ArrayList<>();
 	
 	public int getId() {
 		return id;
@@ -74,24 +76,21 @@ public class Book {
 	public void setGenre(Genre genre) {
 		this.genre = genre;
 	}
-	public String getAuthorFirstName() {
-		return authorFirstName;
+	public List<Author> getAuthors() {
+		return authors;
 	}
-	public void setAuthorFirstName(String authorFirstName) {
-		this.authorFirstName = authorFirstName;
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
 	}
-	public String getAuthorLastName() {
-		return authorLastName;
-	}
-	public void setAuthorLastName(String authorLastName) {
-		this.authorLastName = authorLastName;
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", genre=" + genre + ", authors=" + authors + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((authorFirstName == null) ? 0 : authorFirstName.hashCode());
-		result = prime * result + ((authorLastName == null) ? 0 : authorLastName.hashCode());
+		result = prime * result + ((authors == null) ? 0 : authors.hashCode());
 		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -106,15 +105,10 @@ public class Book {
 		if (getClass() != obj.getClass())
 			return false;
 		Book other = (Book) obj;
-		if (authorFirstName == null) {
-			if (other.authorFirstName != null)
+		if (authors == null) {
+			if (other.authors != null)
 				return false;
-		} else if (!authorFirstName.equals(other.authorFirstName))
-			return false;
-		if (authorLastName == null) {
-			if (other.authorLastName != null)
-				return false;
-		} else if (!authorLastName.equals(other.authorLastName))
+		} else if (!authors.equals(other.authors))
 			return false;
 		if (genre == null) {
 			if (other.genre != null)
@@ -130,10 +124,5 @@ public class Book {
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", genre=" + genre + ", authorFirstName=" + authorFirstName
-				+ ", authorLastName=" + authorLastName + "]";
-	}
-
+	
 }
