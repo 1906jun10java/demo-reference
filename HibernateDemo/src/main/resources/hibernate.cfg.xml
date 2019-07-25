@@ -20,5 +20,6 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<!-- where are our mapped beans? -->
 		<mapping class="com.revature.beans.Book"></mapping>
+		<mapping class="com.revature.beans.Genre"></mapping>
 	</session-factory>
 </hibernate-configuration>

@@ -1,10 +1,14 @@
 package com.revature.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -15,14 +19,14 @@ public class Book {
 	public Book() {
 		super();
 	}
-	public Book(String title, String genre, String authorFirstName, String authorLastName) {
+	public Book(String title, Genre genre, String authorFirstName, String authorLastName) {
 		super();
 		this.title = title;
 		this.genre = genre;
 		this.authorFirstName = authorFirstName;
 		this.authorLastName = authorLastName;
 	}
-	public Book(int id, String title, String genre, String authorFirstName, String authorLastName) {
+	public Book(int id, String title, Genre genre, String authorFirstName, String authorLastName) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -40,8 +44,11 @@ public class Book {
 	@Column(name="BOOK_TITLE")
 	private String title;
 	
-	@Column(name="BOOK_GENRE")
-	private String genre;
+	// establish a foreign key from Book to Genre
+	// Genre has to be a mapped entity for this work correctly
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	@JoinColumn(name="GENRE_ID")
+	private Genre genre;
 	
 	@Column(name="AUTHOR_FIRST_NAME")
 	private String authorFirstName;
@@ -61,10 +68,10 @@ public class Book {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getGenre() {
+	public Genre getGenre() {
 		return genre;
 	}
-	public void setGenre(String genre) {
+	public void setGenre(Genre genre) {
 		this.genre = genre;
 	}
 	public String getAuthorFirstName() {
