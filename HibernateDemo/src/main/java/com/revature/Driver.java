@@ -24,8 +24,29 @@ public class Driver {
 		 */
 
 		SessionFactory sf = ConnectionUtil.getSessionFactory();
-		funWithMultiplicity(sf);
+		funWithCacheing(sf);
 		
+	}
+	
+	static void funWithCacheing(SessionFactory sf) {
+		Session s = sf.openSession();
+		Transaction tx = s.beginTransaction();
+		
+		Book b = s.get(Book.class, 1);
+		
+		System.out.println("Is the book in the session cache?");
+		System.out.println(s.contains(b));
+		System.out.println(s.getStatistics());
+		
+		s.evict(b);
+		
+		System.out.println("Is the book in the session cache?");
+		System.out.println(s.contains(b));
+		System.out.println(s.getStatistics());
+		// note: genre-book cascade is set to persist, not all, so genre entity is not removed from the cache. 
+		
+		tx.commit();
+		s.close();
 	}
 	
 	
