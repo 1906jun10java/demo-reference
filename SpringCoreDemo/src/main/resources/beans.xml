@@ -6,4 +6,8 @@
 	 http://www.springframework.org/schema/beans/spring-beans.xsd
 	 http://www.springframework.org/schema/context 
 	 http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	 <!-- XSD - XML Schema Definition - document which provides rules for validating a XML document of a certain type -->
+	 <!-- specify how an XML file should be structured in order to be "valid" -->
+	 <!-- "valid" XML conforms to a XSD or DTD (Document Type Definition, like an XSD but less detailed) -->
+	 <!-- "well-formed" XML follows basic style rules like all elements have opening/closing tags, etc. -->
 </beans>
