@@ -14,10 +14,10 @@ public class Flashcard {
 		super();
 	}
 
-	protected int id;
-	protected String question;
-	protected String answer;
-	protected FlashcardTopic topic;
+	private int id;
+	private String question;
+	private String answer;
+	private FlashcardTopic topic;
 
 	public String getQuestion() {
 		return question;

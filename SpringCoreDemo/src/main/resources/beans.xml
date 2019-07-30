@@ -6,8 +6,50 @@
 	 http://www.springframework.org/schema/beans/spring-beans.xsd
 	 http://www.springframework.org/schema/context 
 	 http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-	 <!-- XSD - XML Schema Definition - document which provides rules for validating a XML document of a certain type -->
-	 <!-- specify how an XML file should be structured in order to be "valid" -->
-	 <!-- "valid" XML conforms to a XSD or DTD (Document Type Definition, like an XSD but less detailed) -->
-	 <!-- "well-formed" XML follows basic style rules like all elements have opening/closing tags, etc. -->
+	<!-- XSD - XML Schema Definition - document which provides rules for validating 
+		a XML document of a certain type -->
+	<!-- specify how an XML file should be structured in order to be "valid" -->
+	<!-- "valid" XML conforms to a XSD or DTD (Document Type Definition, like 
+		an XSD but less detailed) -->
+	<!-- "well-formed" XML follows basic style rules like all elements have 
+		opening/closing tags, etc. -->
+
+	<!-- specify logical name for the bean that the IoC container will use to 
+		identify it -->
+	<bean name="author" class="com.revature.beans.Author">
+		<!-- inject some primitive values -->
+		<!-- note! you usually only want to do this for SINGLETON SCOPED beans - one instance per ApplicationContext -->
+		<!-- this is the default scope of a Spring bean -->
+		<property name="id" value="45"></property>
+		<property name="firstName" value="Ringo"></property>
+		<property name="lastName" value="Starr"></property>
+	</bean>
+
+	<!-- Setter injection example -->	
+	<!-- PROTOTYPE SCOPE means that a new instance of the bean will be returned with every request to the IoC container -->
+	<bean name="flashcardWithSetter" class="com.revature.beans.FlashcardWithSetter" scope="prototype">
+		<!-- set up the DI -->
+		<!-- "name" is the name of the FIELD IN THE BEAN (Spring will look for a setter which is called set[NAME] -->
+		<!-- "ref" is the name of the BEAN being injected -->
+		<property name="author" ref="author"></property>
+	</bean>
+	
+	<!-- Constructor injection example -->
+	<bean name="flashcardWithConstructor" class="com.revature.beans.FlashcardWithConstructor" scope="prototype">
+		<constructor-arg ref="author"></constructor-arg>
+	</bean>
+	
+	<!-- autowiring, byName or byType -->
+	<!-- don't explicitly declare what dependency we're using -->
+	<bean name="flashcardWithAutoByName"
+		class="com.revature.beans.FlashcardWithAutoByName" autowire="byName"
+		scope="prototype"></bean>
+	<bean name="flashcardWithAutoByType"
+		class="com.revature.beans.FlashcardWithAutoByType" autowire="byType"
+		scope="prototype"></bean>
+		
+	<!-- can use "stereotypes" (special annotations on classes which will become beans) to register beans -->
+	<!-- this will mean that the bean definition or bean "recipe" does not show up in a config file -->
+	<context:component-scan base-package="com.revature"></context:component-scan>
+	
 </beans>
