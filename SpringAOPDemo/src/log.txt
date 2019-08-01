@@ -1,0 +1,26 @@
+2019-08-01 11:14:47 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Thu Aug 01 11:14:47 EDT 2019]; root of context hierarchy
+2019-08-01 11:14:47 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2019-08-01 11:14:47 INFO  root:21 - Bear [speed=10.0, isHungry=true] is chasing Human [speed=20.0, isHungry=false]
+2019-08-01 11:14:47 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Thu Aug 01 11:14:47 EDT 2019]; root of context hierarchy
+2019-08-01 11:17:41 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Thu Aug 01 11:17:41 EDT 2019]; root of context hierarchy
+2019-08-01 11:17:41 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2019-08-01 11:17:42 INFO  root:21 - Human [speed=20.0, isHungry=false] is chasing Bear [speed=10.0, isHungry=true]
+2019-08-01 11:17:42 WARN  root:34 - Human [speed=20.0, isHungry=false] caught Bear [speed=10.0, isHungry=true]
+2019-08-01 11:17:42 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Thu Aug 01 11:17:41 EDT 2019]; root of context hierarchy
+2019-08-01 11:19:20 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Thu Aug 01 11:19:20 EDT 2019]; root of context hierarchy
+2019-08-01 11:19:20 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2019-08-01 11:19:21 INFO  root:21 - Human [speed=20.0, isHungry=false] is chasing Bear [speed=10.0, isHungry=true]
+2019-08-01 11:19:21 WARN  root:34 - Human [speed=20.0, isHungry=false] caught Bear [speed=10.0, isHungry=true]
+2019-08-01 11:19:21 INFO  root:21 - Tiger [speed=30.0, isHungry=true] is chasing Human [speed=20.0, isHungry=false]
+2019-08-01 11:19:21 WARN  root:34 - Tiger [speed=30.0, isHungry=true] caught Human [speed=20.0, isHungry=false]
+2019-08-01 11:19:21 FATAL root:36 - Tiger [speed=30.0, isHungry=true] ate Human [speed=20.0, isHungry=false]
+2019-08-01 11:19:21 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Thu Aug 01 11:19:20 EDT 2019]; root of context hierarchy
+2019-08-01 11:38:41 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Thu Aug 01 11:38:41 EDT 2019]; root of context hierarchy
+2019-08-01 11:38:41 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2019-08-01 11:38:41 INFO  root:42 - Human [speed=20.0, isHungry=false] is chasing Bear [speed=10.0, isHungry=true]
+2019-08-01 11:38:41 WARN  root:44 - Human [speed=20.0, isHungry=false] is faster Bear [speed=10.0, isHungry=true]
+2019-08-01 11:38:41 INFO  root:28 - void com.revature.service.CircleOfLifeService.chase(Animal,Animal)
+2019-08-01 11:38:41 INFO  root:42 - Tiger [speed=30.0, isHungry=true] is chasing Human [speed=20.0, isHungry=false]
+2019-08-01 11:38:41 WARN  root:44 - Tiger [speed=30.0, isHungry=true] is faster Human [speed=20.0, isHungry=false]
+2019-08-01 11:38:41 ERROR root:34 - void com.revature.service.CircleOfLifeService.chase(Animal,Animal) threw class com.revature.exception.GotEatenException with stack trace: [Ljava.lang.StackTraceElement;@17a7f733
+2019-08-01 11:38:41 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@573fd745: startup date [Thu Aug 01 11:38:41 EDT 2019]; root of context hierarchy
