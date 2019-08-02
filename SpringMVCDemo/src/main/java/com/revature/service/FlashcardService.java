@@ -1,29 +1,33 @@
 package com.revature.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.beans.Flashcard;
-import com.revature.beans.FlashcardTopic;
+import com.revature.dao.FlashcardDAO;
 
 @Service
 public class FlashcardService {
 
-	private List<Flashcard> flashcards = new ArrayList<>();
+	private FlashcardDAO flashcardDAO;
 
-	public FlashcardService() {
-		flashcards.add(new Flashcard(1, "what is the answer to life, the universe, and everything?", "42",
-				FlashcardTopic.THE_BEATLES, null));
+	@Autowired
+	public FlashcardService(FlashcardDAO flashcardDAO) {
+		this.flashcardDAO = flashcardDAO;
 	}
 	
 	public List<Flashcard> allFlashcards() {
-		return this.flashcards;
+		return this.flashcardDAO.allFlashcards();
+	}
+	
+	public Flashcard getFlashcardById(int id) {
+		return this.flashcardDAO.getFlashcardById(id);
 	}
 	
 	public void createFlashcard(Flashcard flashcard) {
-		flashcards.add(flashcard);
+		this.flashcardDAO.createFlashcard(flashcard);
 	}
 
 }

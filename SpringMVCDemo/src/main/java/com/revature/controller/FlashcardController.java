@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,16 @@ public class FlashcardController {
 	@RequestMapping(value="/all", method=RequestMethod.GET)
 	public ResponseEntity<List<Flashcard>> getAllFlashcards() {
 		return new ResponseEntity<>(flashcardService.allFlashcards(), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	public ResponseEntity<Flashcard> getFlashcardById(@PathVariable int id) {
+		Flashcard f = flashcardService.getFlashcardById(id);
+		if (f == null) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		} else {
+			return new ResponseEntity<>(f, HttpStatus.OK);
+		}
 	}
 	
 	@PostMapping // we could also do RequestMapping with RequestMethod.POST

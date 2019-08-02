@@ -13,5 +13,7 @@
 		up in a config file -->
 	<context:component-scan
 		base-package="com.revature"></context:component-scan>
+		
+	<!-- configuration from the OrmConfiguration file (bean recipes, etc.) gets added to this config metadata -->
 
 </beans>
