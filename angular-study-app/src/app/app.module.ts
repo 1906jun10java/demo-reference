@@ -29,12 +29,13 @@ import { AngularJSComponent } from './components/angularjs/angularjs.component';
 import { DatabindingComponent } from './components/databinding/databinding.component';
 import { StructuralComponent } from './components/structural/structural.component';
 import { FlashcardComponent } from './components/structural/flashcard/flashcard.component';
+import { FlashcardDemoComponent } from './components/flashcard-demo/flashcard-demo.component';
 import { PipeComponent } from './components/pipe/pipe.component';
+import { HttpComponent } from './components/http/http.component';
 
 // services
 import { BearService } from './services/bear.service';
-
-import { HttpComponent } from './components/http/http.component';
+import { FlashcardService } from './services/flashcard-service';
 
 @NgModule({
   declarations: [
@@ -61,15 +62,16 @@ import { HttpComponent } from './components/http/http.component';
     StructuralComponent,
     FlashcardComponent,
     PipeComponent,
-    HttpComponent
+    HttpComponent,
+    FlashcardDemoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, // this is the router configured in app-routing.module.ts
     FormsModule,
     HttpClientModule
   ],
-  providers: [BearService],
+  providers: [BearService, FlashcardService],
   // bootstrapping: tell Angular which component to load as root component
   bootstrap: [AppComponent]
 })

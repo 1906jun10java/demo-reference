@@ -24,6 +24,7 @@ import { DatabindingComponent } from './components/databinding/databinding.compo
 import { StructuralComponent } from './components/structural/structural.component';
 import { PipeComponent } from './components/pipe/pipe.component';
 import { HttpComponent } from './components/http/http.component';
+import { FlashcardDemoComponent } from './components/flashcard-demo/flashcard-demo.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -48,7 +49,8 @@ export const routes: Routes = [
   { path: 'structural', component: StructuralComponent },
   { path: 'pipe', component: PipeComponent },
   { path: 'http', component: HttpComponent },
-  { path: '**', redirectTo: '/main' }
+  { path: 'flashcard-demo', component: FlashcardDemoComponent },
+  { path: '**', redirectTo: '/main' } // wildcard - any unmapped routes go here
 ];
 
 @NgModule({

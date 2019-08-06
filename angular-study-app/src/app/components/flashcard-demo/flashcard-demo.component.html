@@ -1,0 +1,14 @@
+<div>   
+    <div class="panel-heading">
+            <span class="label label-default label-center">Flashcards from Backend</span>
+    </div>
+    <div class="panel-body">
+            <div class="list-group">
+                    <div *ngFor="let flashcard of Flashcards" class="list-group-item">
+                        <h4>{{flashcard.question}}</h4>
+                        <h5>{{flashcard.answer}}</h5>
+                        <span>Author: {{flashcard.author.firstName}} {{flashcard.author.lastName}}</span>
+                    </div>
+            </div>
+    </div>
+</div>

@@ -25,6 +25,7 @@ public class FlashcardDAOImpl implements FlashcardDAO {
 	@Override
 	public List<Flashcard> allFlashcards() {
 		Session s = sessionFactory.getCurrentSession();
+		System.out.println("in Flashcard dao");
 		return s.createQuery("from Flashcard").getResultList();
 	}
 
