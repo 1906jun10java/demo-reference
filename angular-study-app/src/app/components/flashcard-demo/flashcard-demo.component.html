@@ -4,7 +4,7 @@
     </div>
     <div class="panel-body">
             <div class="list-group">
-                    <div *ngFor="let flashcard of Flashcards" class="list-group-item">
+                    <div *ngFor="let flashcard of flashcards" class="list-group-item">
                         <h4>{{flashcard.question}}</h4>
                         <h5>{{flashcard.answer}}</h5>
                         <span>Author: {{flashcard.author.firstName}} {{flashcard.author.lastName}}</span>
