@@ -10,10 +10,26 @@ import { Flashcard } from '../../models/flashcard.model';
 export class FlashcardDemoComponent implements OnInit {
 
     public flashcards: Flashcard[]; 
+    public flashcardToCreate: Flashcard = {
+        id: 1998,
+        question: "What do badgers eat?",
+        answer: "Everything",
+        topic: "THE_BEATLES",
+        author: {
+            id: 835,
+            firstName: "Sun",
+            lastName: "Flash"
+        }
+    }
+
+    public submitFlashcard(): void {
+        // call method in flashcardService which uses HttpClient to perform a POST request to backend
+    }
 
     // Inject service
     // in a typescript constructor, can define properties of the class
     constructor(private flashcardService: FlashcardService) { }
+
 
 
     ngOnInit(): void {
