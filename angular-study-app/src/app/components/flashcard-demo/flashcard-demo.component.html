@@ -1,36 +1,42 @@
-<div>   
+<div>
     <div class="panel-heading">
-            <span class="label label-default label-center">Flashcards from Backend</span>
+        <span class="label label-default label-center">Flashcards from Backend</span>
     </div>
     <div class="panel-body">
-            <div class="list-group">
-                    <div class="list-group-item list-group-item-demo">
+        <div class="list-group">
+            <div class="list-group-item list-group-item-demo">
+                <form [formGroup]="form">
+                    <fieldset formGroupName="card">
                         <div class="form-group">
-                            <input [(ngModel)]="flashcardToCreate.question" placeholder="Question" class="form-control"/>
+                            <input formControlName="question" placeholder="Question" class="form-control" />
                         </div>
                         <div class="form-group">
-                            <input [(ngModel)]="flashcardToCreate.answer" placeholder="Answer" class="form-control"/>
+                            <input formControlName="answer" placeholder="Answer" class="form-control" />
                         </div>
                         <!-- this should be a dropdown of valid topics-->
                         <div class="form-group">
-                            <input [(ngModel)]="flashcardToCreate.topic" placeholder="Topic" class="form-control"/>
+                            <input formControlName="topic" placeholder="Topic" class="form-control" />
                         </div>
+                    </fieldset>
+                    <fieldset formGroupName="author">
                         <!-- this probably should be a dropdown of valid authors or the current logged-in user -->
                         <div class="form-group">
-                            <input [(ngModel)]="flashcardToCreate.author.firstName" placeholder="Author First Name" class="form-control"/>
-                            <input [(ngModel)]="flashcardToCreate.author.lastName" placeholder="Author Last Name" class="form-control"/>
+                            <input formControlName="firstName" placeholder="Author First Name" class="form-control" />
+                            <input formControlName="lastName" placeholder="Author Last Name" class="form-control" />
                         </div>
-                        <div>
-                            <button class = "btn btn-primary btn-center" (click) = "submitFlashcard()">Create Flashcard</button>
-                        </div>
-                    </div>      
-            </div>
-            <div class="list-group">
-                    <div *ngFor="let flashcard of flashcards" class="list-group-item">
-                        <h4>{{flashcard.question}}</h4>
-                        <h5>{{flashcard.answer}}</h5>
-                        <span>Author: {{flashcard.author.firstName}} {{flashcard.author.lastName}}</span>
+                    </fieldset>
+                    <div>
+                        <button (click)="submitFlashcard()" class="btn btn-primary btn-center">Create Flashcard</button>
                     </div>
+                </form>
             </div>
+        </div>
+        <div class="list-group">
+            <div *ngFor="let flashcard of flashcards" class="list-group-item">
+                <h4>{{flashcard.question}}</h4>
+                <h5>{{flashcard.answer}}</h5>
+                <span>Author: {{flashcard.author.firstName}} {{flashcard.author.lastName}}</span>
+            </div>
+        </div>
     </div>
 </div>
