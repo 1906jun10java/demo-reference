@@ -69,7 +69,7 @@ import { FlashcardService } from './services/flashcard-service';
     BrowserModule,
     AppRoutingModule, // this is the router configured in app-routing.module.ts
     FormsModule,
-    HttpClientModule
+    HttpClientModule // this is providing the HttpClient we'll need to send HTTP requests
   ],
   providers: [BearService, FlashcardService],
   // bootstrapping: tell Angular which component to load as root component

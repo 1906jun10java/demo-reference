@@ -9,7 +9,7 @@ import { Flashcard } from '../../models/flashcard.model';
   })
 export class FlashcardDemoComponent implements OnInit {
 
-    public flashcards: Flashcard[] = this.flashcardService.fetchAllFlashcards();
+    public flashcards: Flashcard[]; 
 
     // Inject service
     // in a typescript constructor, can define properties of the class
@@ -17,7 +17,10 @@ export class FlashcardDemoComponent implements OnInit {
 
 
     ngOnInit(): void {
-       // this.flashcards = this.flashcardService.fetchAllFlashcards();
+       this.flashcardService.fetchAllFlashcards().subscribe(
+           cardList => this.flashcards = cardList,
+           error => console.log(error)     
+        );
     }
 
 }

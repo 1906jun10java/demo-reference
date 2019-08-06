@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Flashcard } from '../models/flashcard.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class FlashcardService {
 
-    private flashcards = [
+    private baseUrl: String = "http://localhost:8082/flashcard";
+    private flashcards: Flashcard[];
+
+    private dummyFlashcards = [
         {
             id: 1,
             question: "What is the question?",
@@ -73,8 +78,11 @@ export class FlashcardService {
         }
       ];
 
-    public fetchAllFlashcards(): Flashcard[] {
-        return this.flashcards;
+    constructor(private http: HttpClient) {
+    }
+
+    public fetchAllFlashcards(): Observable<Flashcard[]> {
+        return this.http.get<Flashcard[]>(this.baseUrl+"/all");
     }
 
 }

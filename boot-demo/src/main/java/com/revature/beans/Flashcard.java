@@ -1,5 +1,6 @@
 package com.revature.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -41,7 +42,7 @@ public class Flashcard {
 	@Column(name="TOPIC")
 	@Enumerated(EnumType.STRING)
 	private FlashcardTopic topic;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="AUTHOR_ID")
 	private Author author;
 
