@@ -48,6 +48,7 @@ public class FlashcardController {
 			flashcardService.createFlashcard(flashcard);
 			resp = new ResponseEntity<>("FLASHCARD CREATED SUCCESSFULLY", HttpStatus.OK);
 		} catch (Exception e) {
+			e.printStackTrace();
 			resp = new ResponseEntity<>("FAILED TO CREATE FLASHCARD", HttpStatus.BAD_REQUEST);
 		}
 		return resp;

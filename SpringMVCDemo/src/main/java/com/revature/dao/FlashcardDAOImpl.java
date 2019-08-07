@@ -2,17 +2,15 @@ package com.revature.dao;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.Flashcard;
 
 @Repository(value="flashcardDAO")
-@Transactional
 public class FlashcardDAOImpl implements FlashcardDAO {
 	
 	private SessionFactory sessionFactory;
@@ -24,19 +22,27 @@ public class FlashcardDAOImpl implements FlashcardDAO {
 
 	@Override
 	public List<Flashcard> allFlashcards() {
-		Session s = sessionFactory.getCurrentSession();
+		Session s = sessionFactory.openSession();
 		System.out.println("in Flashcard dao");
-		return s.createQuery("from Flashcard").getResultList();
+		List<Flashcard> cards = s.createQuery("from Flashcard").getResultList();
+		s.close();
+		return cards;
 	}
 
 	@Override
 	public Flashcard getFlashcardById(int id) {
-		return sessionFactory.getCurrentSession().get(Flashcard.class, id);
+		Session s = sessionFactory.openSession();
+		Flashcard f = s.get(Flashcard.class, id);
+		s.close();
+		return f;
 	}
 
 	@Override
+	@Transactional
 	public void createFlashcard(Flashcard flashcard) {
-		sessionFactory.getCurrentSession().persist(flashcard);
+		flashcard.setId(0);
+		Session s = sessionFactory.getCurrentSession();
+		s.persist(flashcard);
 	}
 
 }
