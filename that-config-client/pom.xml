@@ -8,10 +8,10 @@
 		<version>2.1.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.revature</groupId>
-	<artifactId>discovery-service-demo</artifactId>
+	<groupId>com.rev</groupId>
+	<artifactId>that-config-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>discovery-service-demo</name>
+	<name>that-config-client</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -22,11 +22,15 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
 
 		<dependency>

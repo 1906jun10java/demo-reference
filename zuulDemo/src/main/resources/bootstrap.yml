@@ -1,0 +1,36 @@
+#server:
+#  port: 8767
+  
+#the bootstrap file is what is loaded first, before application.properties
+
+#spring:
+#  application:
+#    name: Zuul-Example
+    
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    
+    
+zuul:
+  routes:
+    gary:
+      path: /flashcard/*
+      service-id: flashcard-service
+      strip-prefix: false
+    gwen:
+      path: /api/*
+      service-id: conservative
+      strip-prefix: false
+    animal:
+      path: /sounds/*
+      service-id: animalSoundsgoHolla
+      strip-prefix: false
+      
+# URL=Universal Resource Locator
+
+# URI= Universal Resource Indentifier
+
+
+      

@@ -1,0 +1,17 @@
+
+server:
+  port: 0
+
+spring:
+  application:
+    name: conservative
+    
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    
+#YAML
+# YAML AINT MARKUP LANGUAGE
+
+
